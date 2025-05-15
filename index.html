@@ -114,6 +114,38 @@
             margin-bottom: 20px;
             color: #7f8c8d;
         }
+        
+        .user-info-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .thank-you {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +162,28 @@
         
         <div id="result-container" class="result">
             <!-- El resultado se mostrará aquí -->
+        </div>
+        
+        <form id="user-info-form" class="user-info-form" action="https://formsubmit.co/ernesto.indec@gmail.com" method="POST">
+            <input type="hidden" name="_subject" id="result-subject" value="Nuevo resultado del quiz de decoración">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="resultado" id="result-value">
+            
+            <h3>¡Queremos enviarte tu resultado!</h3>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Enviar mi resultado</button>
+        </form>
+        
+        <div id="thank-you" class="thank-you">
+            <h2>¡Gracias por participar!</h2>
+            <p>Hemos enviado tu resultado a tu correo electrónico.</p>
         </div>
     </div>
 
@@ -228,6 +282,10 @@
         const submitBtn = document.getElementById('submit-btn');
         const currentQuestionElement = document.getElementById('current-question');
         const totalQuestionsElement = document.getElementById('total-questions');
+        const userInfoForm = document.getElementById('user-info-form');
+        const thankYouMessage = document.getElementById('thank-you');
+        const resultValueInput = document.getElementById('result-value');
+        const resultSubjectInput = document.getElementById('result-subject');
 
         // Mostrar el número total de preguntas
         totalQuestionsElement.textContent = quizData.length;
@@ -288,14 +346,14 @@
             
             // Cambiar texto del botón si es la última pregunta
             if (currentQuestion === quizData.length - 1) {
-                submitBtn.textContent = 'Ver mi resultado';
+                submitBtn.textContent = 'Continuar';
             } else {
                 submitBtn.textContent = 'Siguiente pregunta';
             }
         }
 
-        // Función para mostrar el resultado
-        function showResult() {
+        // Función para calcular el resultado
+        function calculateResult() {
             // Calcular el estilo predominante
             const styleCounts = {};
             
@@ -315,8 +373,27 @@
                 }
             }
             
-            // Mostrar el resultado
-            const result = resultados[resultStyle];
+            return resultados[resultStyle];
+        }
+
+        // Función para mostrar el formulario de datos
+        function showUserForm() {
+            const result = calculateResult();
+            
+            // Configurar el formulario con el resultado
+            resultValueInput.value = `${result.titulo}\n\n${result.descripcion}`;
+            resultSubjectInput.value = `Resultado del quiz: ${result.titulo}`;
+            
+            // Ocultar preguntas y mostrar formulario
+            questionsContainer.style.display = 'none';
+            submitBtn.style.display = 'none';
+            document.querySelector('.progress').style.display = 'none';
+            userInfoForm.style.display = 'block';
+        }
+
+        // Función para mostrar el resultado
+        function showResult() {
+            const result = calculateResult();
             
             resultContainer.innerHTML = `
                 <div class="emoji">${result.titulo.split(' ')[0]}</div>
@@ -328,6 +405,13 @@
             questionsContainer.style.display = 'none';
             submitBtn.style.display = 'none';
             document.querySelector('.progress').style.display = 'none';
+            
+            // Configurar el formulario con el resultado
+            resultValueInput.value = `${result.titulo}\n\n${result.descripcion}`;
+            resultSubjectInput.value = `Resultado del quiz: ${result.titulo}`;
+            
+            // Mostrar formulario para datos del usuario
+            userInfoForm.style.display = 'block';
         }
 
         // Event listener para el botón de enviar
@@ -337,8 +421,40 @@
                 showQuestion();
                 submitBtn.disabled = true;
             } else {
-                showResult();
+                showUserForm();
             }
+        });
+
+        // Manejar el envío del formulario
+        userInfoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí podrías añadir validación adicional si lo deseas
+            
+            // Enviar el formulario mediante Fetch API
+            fetch(userInfoForm.action, {
+                method: 'POST',
+                body: new FormData(userInfoForm),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Mostrar mensaje de agradecimiento
+                    userInfoForm.style.display = 'none';
+                    resultContainer.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                    
+                    // Opcional: Resetear el quiz después de unos segundos
+                    setTimeout(() => {
+                        location.reload();
+                    }, 5000);
+                } else {
+                    alert('Hubo un error al enviar tus datos. Por favor inténtalo de nuevo.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar tus datos. Por favor inténtalo de nuevo.');
+            });
         });
 
         // Iniciar el quiz
