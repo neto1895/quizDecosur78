@@ -1,5 +1,4 @@
     
-        // JavaScript
         const quizData = [
             {
                 pregunta: "¿Qué ambiente prefieres en tu espacio ideal?",
@@ -58,38 +57,19 @@
             }
         ];
 
-        const resultados = {
-            minimalista: {
-                titulo: "🖤 Estilo Minimalista",
-                descripcion: "Menos es más. Líneas limpias, colores neutros y acabados sutiles como el piso laminado en tonos claros, mosquiteros discretos y persianas enrollables crean ambientes elegantes y funcionales."
-            },
-            natural: {
-                titulo: "🌿 Estilo Natural",
-                descripcion: "Ideal para quienes aman lo orgánico y la frescura. Combina muros verdes, pasto sintético y tonos tierra con persianas sheer elegance o cortinas en lino. Perfecto para crear un oasis en casa o una oficina viva y acogedora."
-            },
-            "urbano-industrial": {
-                titulo: "🌇 Estilo Urbano-Industrial",
-                descripcion: "Para quienes buscan modernidad con carácter. Mezcla papel tapiz con textura de concreto o ladrillo, pérgolas metálicas, y cortinas en tonos oscuros. Añade un toque audaz con plantas artificiales para equilibrar."
-            },
-            "tropical-boho": {
-                titulo: "🏖️ Estilo Tropical/Boho",
-                descripcion: "Perfecto para espíritus libres y ambientes relajados. Atrévete con muros verdes, persianas color bambú enrollables, pasto sintético, y colores vivos en cortinas y papel tapiz. Un rincón de vacaciones permanente."
-            },
-            clasico: {
-                titulo: "🏡 Estilo Clásico",
-                descripcion: "La creatividad es prioritaria en todo lo que hacemos. Ofrecemos soluciones innovadoras que hacen que su proyecto se destaque sin dejar de ser original y funcional."
-            },
-            contemporaneo: {
-                titulo: "🎨 Estilo Contemporáneo Creativo",
-                descripcion: "Diseñado para los que aman la originalidad con armonía. Juega con papel tapiz geométrico, pérgolas con iluminación integrada, y combinaciones de texturas como piso laminado con alfombras coloridas. Usa cortinas de doble capa o persianas motorizadas para un toque moderno y funcional."
-            }
+        const resultadosPaginas = {
+            minimalista: "resultado-minimalista.html",
+            natural: "resultado-natural.html",
+            "urbano-industrial": "resultado-urbano-industrial.html",
+            "tropical-boho": "resultado-tropical-boho.html",
+            clasico: "resultado-clasico.html",
+            contemporaneo: "resultado-contemporaneo.html"
         };
 
         // Variables del estado del quiz
         let currentQuestion = 0;
         const answers = [];
         const questionsContainer = document.getElementById('questions-container');
-        const resultContainer = document.getElementById('result-container');
         const submitBtn = document.getElementById('submit-btn');
         const currentQuestionElement = document.getElementById('current-question');
         const totalQuestionsElement = document.getElementById('total-questions');
@@ -159,8 +139,8 @@
             }
         }
 
-        // Función para mostrar el resultado
-        function showResult() {
+        // Función para determinar el resultado y redirigir
+        function determinarResultadoYRedirigir() {
             // Calcular el estilo predominante
             const styleCounts = {};
             
@@ -180,19 +160,8 @@
                 }
             }
             
-            // Mostrar el resultado
-            const result = resultados[resultStyle];
-            
-            resultContainer.innerHTML = `
-                <div class="emoji">${result.titulo.split(' ')[0]}</div>
-                <h2>${result.titulo}</h2>
-                <p>${result.descripcion}</p>
-            `;
-            
-            resultContainer.style.display = 'block';
-            questionsContainer.style.display = 'none';
-            submitBtn.style.display = 'none';
-            document.querySelector('.progress').style.display = 'none';
+            // Redirigir a la página correspondiente
+            window.location.href = resultadosPaginas[resultStyle];
         }
 
         // Event listener para el botón de enviar
@@ -202,10 +171,9 @@
                 showQuestion();
                 submitBtn.disabled = true;
             } else {
-                showResult();
+                determinarResultadoYRedirigir();
             }
         });
 
         // Iniciar el quiz
         showQuestion();
-   
