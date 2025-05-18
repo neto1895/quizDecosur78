@@ -58,12 +58,12 @@
         ];
 
         const resultadosPaginas = {
-            minimalista: "resultado-minimalista.html",
-            natural: "resultado-natural.html",
-            "urbano-industrial": "resultado-urbano-industrial.html",
-            "tropical-boho": "resultado-tropical-boho.html",
-            clasico: "resultado-clasico.html",
-            contemporaneo: "resultado-contemporaneo.html"
+            minimalista: "https://www.decosur78.com/estilo-minimalista",
+            natural: "https://www.decosur78.com/estilo-natural",
+            "urbano-industrial": "https://www.decosur78.com/estilo-urbano-industrial",
+            "tropical-boho": "https://www.decosur78.com/estilo-tropical-boho",
+            clasico: "https://www.decosur78.com/estilo-clasico",
+            contemporaneo: "https://www.decosur78.com/estilo-contemporaneo"
         };
 
         // Variables del estado del quiz
