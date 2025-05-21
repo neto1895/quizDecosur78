@@ -1,61 +1,101 @@
+/* Tipografía general */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
 
+/* Título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2c3e50;
+}
 
-        /* CSS */
-         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        .question {
-            margin-bottom: 30px;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .option {
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .option:hover {
-            background-color: #f5f5f5;
-        }
-        .option.selected {
-            border-color: #4a6fa5;
-            background-color: #e7f0ff;
-        }
-        #submit-btn {
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #4a6fa5;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        #submit-btn:hover {
-            background-color: #3a5a80;
-        }
-        #submit-btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        .progress {
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .emoji {
-            font-size: 60px;
-            text-align: center;
-            margin: 20px 0;
-        }
+/* Progreso */
+.progress {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #4a6fa5;
+}
+
+/* Contenedor de pregunta */
+.question {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+.question h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+/* Opciones */
+.options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.option {
+    padding: 15px 20px;
+    background-color: #f1f5f9;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.option:hover {
+    background-color: #e2e8f0;
+}
+
+.option.selected {
+    border-color: #4a6fa5;
+    background-color: #e0ecff;
+    font-weight: bold;
+}
+
+/* Botón */
+#submit-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 14px 30px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: #3b5b85;
+}
+
+#submit-btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+    .options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
