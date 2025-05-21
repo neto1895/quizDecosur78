@@ -1,61 +1,51 @@
     
-        const quizData = [
-            {
-                pregunta: "¿Qué ambiente prefieres en tu espacio ideal?",
-                opciones: [
-                    { texto: "🏙️ Ordenado, funcional y con mucho espacio despejado", estilo: "minimalista" },
-                    { texto: "🌱 Conectado con la naturaleza y materiales orgánicos", estilo: "natural" },
-                    { texto: "🏗️ Moderno con elementos industriales y urbanos", estilo: "urbano-industrial" },
-                    { texto: "🌿 Relajado, colorido y con sensación de vacaciones", estilo: "tropical-boho" },
-                    { texto: "🏛️ Elegante, atemporal y con detalles tradicionales", estilo: "clasico" },
-                    { texto: "🎨 Innovador, con combinaciones audaces y artísticas", estilo: "contemporaneo" }
-                ]
-            },
-            {
-                pregunta: "¿Qué combinación de colores te atrae más?",
-                opciones: [
-                    { texto: "⚪ Blanco, gris y tonos neutros ultra claros", estilo: "minimalista" },
-                    { texto: "🟫 Beige, verde suave y tonos tierra", estilo: "natural" },
-                    { texto: "⚫ Gris oscuro, negro y tonos metalizados", estilo: "urbano-industrial" },
-                    { texto: "🌈 Colores vivos (turquesa, coral, amarillo)", estilo: "tropical-boho" },
-                    { texto: "🟤 Marfil, dorado y azul profundo", estilo: "clasico" },
-                    { texto: "🔷 Contrastes fuertes (negro/blanco) con toques de color brillante", estilo: "contemporaneo" }
-                ]
-            },
-            {
-                pregunta: "¿Qué tipo de materiales te gustaría predominaran?",
-                opciones: [
-                    { texto: "🪵 Madera clara y superficies lisas sin texturas", estilo: "minimalista" },
-                    { texto: "🌿 Plantas naturales, lino y fibras orgánicas", estilo: "natural" },
-                    { texto: "🧱 Metal, concreto visto y ladrillo expuesto", estilo: "urbano-industrial" },
-                    { texto: "🧶 Tejidos artesanales, ratán y bambú", estilo: "tropical-boho" },
-                    { texto: "🪞 Mármol, maderas nobles y cristal", estilo: "clasico" },
-                    { texto: "✨ Mezcla innovadora (metales pulidos con textiles geométricos)", estilo: "contemporaneo" }
-                ]
-            },
-            {
-                pregunta: "¿Cómo imaginas las ventanas de tu espacio ideal?",
-                opciones: [
-                    { texto: "🪟 Persianas enrollables ultra discretas", estilo: "minimalista" },
-                    { texto: "🌸 Cortinas sheer elegance o de lino translúcido", estilo: "natural" },
-                    { texto: "🖤 Cortinas en tonos oscuros o metálicos", estilo: "urbano-industrial" },
-                    { texto: "� Persianas de bambú o estampados tropicales", estilo: "tropical-boho" },
-                    { texto: "🏺 Cortinas clásicas con detalles ornamentales", estilo: "clasico" },
-                    { texto: "🤖 Persianas motorizadas con diseño geométrico", estilo: "contemporaneo" }
-                ]
-            },
-            {
-                pregunta: "¿Qué elemento decorativo sería tu prioridad?",
-                opciones: [
-                    { texto: "💡 Iluminación discreta y empotrada", estilo: "minimalista" },
-                    { texto: "🪴 Un muro verde o jardín interior", estilo: "natural" },
-                    { texto: "🔩 Lámparas industriales o estructuras metálicas", estilo: "urbano-industrial" },
-                    { texto: "🌴 Pasto sintético o hamacas colgantes", estilo: "tropical-boho" },
-                    { texto: "🖼️ Cuadros antiguos o molduras decorativas", estilo: "clasico" },
-                    { texto: "🟦 Arte moderno o piezas de diseño innovador", estilo: "contemporaneo" }
-                ]
-            }
-        ];
+const quizData = [
+    {
+        pregunta: "¿Qué ambiente te atrae más?",
+        opciones: [
+            { texto: "🧼 Espacios limpios y funcionales", estilo: "minimalista" },
+            { texto: "🌿 Natural y acogedor", estilo: "natural" },
+            { texto: "🏙️ Urbano y moderno", estilo: "urbano-industrial" },
+            { texto: "🎨 Creativo y con personalidad", estilo: "contemporaneo" }
+        ]
+    },
+    {
+        pregunta: "¿Qué paleta de colores prefieres?",
+        opciones: [
+            { texto: "⚪ Neutros claros", estilo: "minimalista" },
+            { texto: "🟤 Tierra y verdes suaves", estilo: "natural" },
+            { texto: "⚫ Oscuros con metálicos", estilo: "urbano-industrial" },
+            { texto: "🔷 Contrastes y acentos vivos", estilo: "contemporaneo" }
+        ]
+    },
+    {
+        pregunta: "¿Qué materiales te gustan más?",
+        opciones: [
+            { texto: "🪵 Madera clara y acabados lisos", estilo: "minimalista" },
+            { texto: "🌾 Fibras naturales y lino", estilo: "natural" },
+            { texto: "🧱 Metal, concreto y ladrillo", estilo: "urbano-industrial" },
+            { texto: "✨ Mezclas modernas y audaces", estilo: "contemporaneo" }
+        ]
+    },
+    {
+        pregunta: "¿Cómo imaginas tus ventanas?",
+        opciones: [
+            { texto: "🪟 Persianas simples", estilo: "minimalista" },
+            { texto: "🌬️ Cortinas ligeras", estilo: "natural" },
+            { texto: "🖤 Cortinas oscuras o metálicas", estilo: "urbano-industrial" },
+            { texto: "🤖 Persianas modernas automatizadas", estilo: "contemporaneo" }
+        ]
+    },
+    {
+        pregunta: "¿Qué deco no puede faltar?",
+        opciones: [
+            { texto: "💡 Iluminación discreta", estilo: "minimalista" },
+            { texto: "🪴 Plantas o muros verdes", estilo: "natural" },
+            { texto: "🔩 Estructuras metálicas", estilo: "urbano-industrial" },
+            { texto: "🟦 Arte moderno o piezas únicas", estilo: "contemporaneo" }
+        ]
+    }
+];
 
         const resultadosPaginas = {
             minimalista: "https://www.decosur78.com/estilo-minimalista",
