@@ -97,6 +97,7 @@ const quizData = [
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', selectOption);
             });
+            updateProgressBar();
         }
 
         // Función para seleccionar una opción
@@ -153,6 +154,11 @@ const quizData = [
             // Redirigir a la página correspondiente
             window.location.href = resultadosPaginas[resultStyle];
         }
+
+function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / quizData.length) * 100;
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+}
 
         // Event listener para el botón de enviar
         submitBtn.addEventListener('click', () => {
